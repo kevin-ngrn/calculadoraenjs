@@ -3,9 +3,7 @@ alert('Bienvenido a Calculando con JS' + ' ' + nombre);
 
 let y = 1;
 do{
-
-let opcion=prompt('¿Que tipo de calculo deseas realizar' + ' ' +nombre+ '? \n1 - Calculadora basica \n2 - Porcentaje de un numero \n3 - Perimetro de una figura geometrica')
-
+let opcion=prompt('¿Que tipo de calculo deseas realizar' + ' ' +nombre+ '? \n1 - Calculadora basica \n2 - Porcentaje de un numero \n3 - Perimetro de una figura geometrica \n4 - Seno, Coseno o Tangente')
     switch (opcion){
     case '1':
         let primerDigito = prompt('Primer digito');
@@ -61,10 +59,20 @@ let opcion=prompt('¿Que tipo de calculo deseas realizar' + ' ' +nombre+ '? \n1 
                     alert (`El perimetro del circulo es ${resultadoDiametro}`);
                 }else{
                     alert('Opcion incorrecta');
-                }break;
-        }
+                }
+            }
+    break;
+    case '4':
+        let trianguloDado = prompt(`Proporciona el largo de: hipotenusa, cateto opuesto y cateto adyacente en ese orden separados por una barra (/)`);
+        let medidas = trianguloDado.split('/')
+        let tipoDeFuncion = prompt(`Selecciona el tipo de funcion trigonometrica que necesites, ${nombre} \n1 - Seno \n2 - Coseno \n3 - Tangente`)
+        switch(tipoDeFuncion){
+            case '1': let resultado = (medidas [1]) / (medidas [0])
+                    let resultadoFinal = resultado * (180/Math.PI);
+            alert(`El seno es ${resultadoFinal}`)}
+            break;
     } y++
-} while(y <= 10)
+} while(y <= 10) 
 
 
 
