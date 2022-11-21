@@ -1,4 +1,56 @@
-class Cuadrado{
+const displayValorAnterior = document.getElementById('valor-anterior'),
+    displayValorActual = document.getElementById('valor-actual'),
+    botonesNumeros = document.querySelectorAll('.numero'),
+    botonesOperadores = document.querySelectorAll('.operador'),
+    botonBorrarTodo = document.querySelector('.col-2'),
+    botonborrar = document.querySelector('.borrar');
+
+
+const display = new Display (displayValorAnterior, displayValorActual);
+
+botonesNumeros.forEach(boton =>{
+    boton.addEventListener('click', () => display.agregarNumero(boton.innerHTML))});
+
+botonesOperadores.forEach(boton=>{
+    boton.addEventListener('click', () => display.computar(boton.value))});
+
+botonBorrarTodo.addEventListener('click', () => display.borrarTodo());
+
+botonborrar.addEventListener('click', () => display.borrar());
+
+
+
+
+
+const botonCalcular = document.querySelector('.botonCalcular');
+botonCalcular.addEventListener('click', () => {capturarDatos()});
+const resultado = document.querySelector('.resultado');
+
+function capturarDatos(){
+    const inputNumeroPorcentaje = document.querySelector('.numeroPorcentaje').value;
+    const inputPorcentaje = document.querySelector('.porcentaje').value
+    let resultadosParseados = parseFloat(inputNumeroPorcentaje)/100 * parseFloat(inputPorcentaje)
+    return resultado.innerHTML = `El ${inputPorcentaje}% de ${inputNumeroPorcentaje} es ${resultadosParseados}`};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* class Cuadrado{
     constructor(lado){
         this.lado = parseFloat(lado)
     }
@@ -24,7 +76,7 @@ class Rectangulo{
 }
 
 const nombre=prompt('¿Cual es tu nombre?');
-alert(`Bienvenido a "Introduccion a las matematicas" ${nombre}`);
+alert(`Bienvenido a "Introduccion a las matematicas" ${nombre}`); 
 
 let y = 1;
 do{
@@ -132,12 +184,7 @@ do{
                 break;
             }
         } y++
-} while(y <= 10)     
-
-
-
-
-
+} while(y <= 10)  */    
 
 
 
