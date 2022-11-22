@@ -1,3 +1,6 @@
+
+/* DISPLAY DE LA CALCULADORA */
+
 class Display{
     constructor(displayValorAnterior, displayValorActual){
         this.displayValorActual = displayValorActual;

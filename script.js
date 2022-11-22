@@ -1,3 +1,33 @@
+
+/* FORM PARA INTERACTUAR CON EL USUARIO MAS ADELANTE */
+
+const divUsuario = document.querySelector('.divUsuario'),
+    divRegistro = document.querySelector('.divRegistro'),
+    nombreUsuario = document.getElementById('nombreUsuario'),
+    edadUsuario = document.getElementById('edadUsuario'),
+    emailUsuario = document.getElementById('emailUsuario'),
+    botonRegistro = document.getElementById('botonRegistro'),
+    usuarioDom = document.getElementById('usuariDom'),
+    edadDom = document.getElementById('edadDom');
+
+
+
+let usuarioRecuperado = localStorage.getItem('usuario');
+let edadRecuperada = localStorage.getItem('edadUsuario');
+
+
+botonRegistro.addEventListener('click', () => {
+    localStorage.setItem('usuario', nombreUsuario.value);
+    localStorage.setItem('edadUsuario', edadUsuario.value);
+    localStorage.setItem('emailUsuario', emailUsuario.value);
+    divUsuario.style.display = "none";
+    divRegistro.style.display = "none";
+});
+
+
+
+/* CALCULADORA BASICA */
+
 const displayValorAnterior = document.getElementById('valor-anterior'),
     displayValorActual = document.getElementById('valor-actual'),
     botonesNumeros = document.querySelectorAll('.numero'),
@@ -20,7 +50,7 @@ botonborrar.addEventListener('click', () => display.borrar());
 
 
 
-
+/* CALCULAR PORCENTAJE DE UN NUMERO  */
 
 const botonCalcular = document.querySelector('.botonCalcular');
 botonCalcular.addEventListener('click', () => {capturarDatos()});
@@ -34,20 +64,7 @@ function capturarDatos(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* CODIGO POR ADAPTAR A LA PAGINA YA CORREGIDO */
 
 
 /* class Cuadrado{
