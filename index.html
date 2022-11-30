@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/estilo.css">
-    <script src="./Display.js" type="text/javascript"></script>
-    <script src="./Calculadora.js" type="text/javascript"></script>
+    <script src="./DisplayCalculadora.js" type="text/javascript"></script>
+    <script src="./Clases.js" type="text/javascript"></script>
     <script src="./script.js" defer></script>
     <title>CALCULADORA JS</title>
 </head>
@@ -27,9 +27,9 @@
                 <button type="button" id="botonRegistro">Listo</button>
             </form>
         </div>
+        <p class="formVacio"></p>
     <center>Herramientas de cálculos básicos - JavaScript</center>
-    <p id="usuarioDom"></p>
-    <p id="edadDom"></p>
+        <p class="usuarioDom"></p>
     <div class="conteinerMain">
     <h3>Calculadora Básica</h3>
     <div class="container">
@@ -73,20 +73,54 @@
     </div>
     <div>
         <h3>Area o Perímetro de una figura geométrica</h3>
-        <form action="#" class="formGeometricas">
+        <div action="#" class="divGeometricas">
             <div>
-            <input type="radio" id="cuadrado"> Cuadrado
+                <p>Cuadrado</p> 
             </div>
             <div>
-            <input type="radio" id="rectangulo"> Rectángulo
+                <p>Rectángulo</p>
+                <p></p>
             </div>
             <div>
-            <input type="radio" id="circulo"> Círculo
+                <p>Círculo</p>
+                <p></p>
             </div>
-        </form>
+        </div>
+        <div class="contenedorFiguras">
+            <img class="imgCuadrado" src="assets/img/cuadrado.png" alt="cuadrado">
+            <img class="imgRectangulo" src="assets/img/rectangulo.png" alt="rectangulo">  
+            <img class="imgCirculo" src="assets/img/circulo.png" alt="circulo">
+        </div>
+        <div class="divBotonesGeo">
+            <div class="botonesCuadrado">
+                <input type="number" placeholder="Lado" class="inputCuadradoL">
+                <button type="button" class="areaPerCuadrado">Calcular</button>
+            </div>
+            <div>
+                <input type="number" placeholder="Largo" class="inputRectanguloL">
+                <input type="number" placeholder="Ancho" class="inputRectanguloA">
+                <button type="button" class="areaPerRectangulo">Calcular</button>
+            </div>
+            <div>
+                <input type="number" placeholder="Radio" class="inputCirculoR">
+                <button type="button" class="areaPerCirculo">Calcular</button>
+            </div>
+        </div>
+        <div>
+            <div>
+                <p class="aResultadoCuadrado"></p>
+                <p class="pResultadoCuadrado"></p>
+            </div>
+            <div>
+                <p class="aResultadoRectangulo"></p>
+                <p class="pResultadoRectangulo"></p>
+            </div>
+            <div>
+                <p class="aResultadoCirculo"></p>
+                <p class="pResultadoCirculo"></p>
+            </div>
+        </div>
     </div>
     </main>
-
-
 </body>
 </html>

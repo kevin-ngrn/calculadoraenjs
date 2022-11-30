@@ -1,5 +1,5 @@
 
-/* FORM PARA INTERACTUAR CON EL USUARIO MAS ADELANTE */
+/* FORM PARA INTERACTUAR CON EL USUARIO */
 
 const divUsuario = document.querySelector('.divUsuario'),
     divRegistro = document.querySelector('.divRegistro'),
@@ -7,22 +7,25 @@ const divUsuario = document.querySelector('.divUsuario'),
     edadUsuario = document.getElementById('edadUsuario'),
     emailUsuario = document.getElementById('emailUsuario'),
     botonRegistro = document.getElementById('botonRegistro'),
-    usuarioDom = document.getElementById('usuariDom'),
-    edadDom = document.getElementById('edadDom');
-
-
-
-let usuarioRecuperado = localStorage.getItem('usuario');
-let edadRecuperada = localStorage.getItem('edadUsuario');
+    usuarioDom = document.querySelector('.usuarioDom'),
+    formVacio = document.querySelector('.formVacio');
 
 
 botonRegistro.addEventListener('click', () => {
-    localStorage.setItem('usuario', nombreUsuario.value);
-    localStorage.setItem('edadUsuario', edadUsuario.value);
-    localStorage.setItem('emailUsuario', emailUsuario.value);
+    if(nombreUsuario.value == ''){
+        formVacio.innerHTML = "Debes completar el formulario";
+    }else{
+        let usuario = {
+            nombre: nombreUsuario.value,
+            edad: edadUsuario.value,
+            email: emailUsuario.value};
+    localStorage.setItem('usuario', JSON.stringify(usuario));
     divUsuario.style.display = "none";
     divRegistro.style.display = "none";
-});
+    formVacio.style.display = "none";
+    let usuarioStorage = JSON.parse(localStorage.getItem("usuario"));
+    usuarioDom.innerHTML = `${usuarioStorage.nombre}, ${usuarioStorage.edad} años`;
+}});
 
 
 
@@ -53,46 +56,73 @@ botonborrar.addEventListener('click', () => display.borrar());
 /* CALCULAR PORCENTAJE DE UN NUMERO  */
 
 const botonCalcular = document.querySelector('.botonCalcular');
-botonCalcular.addEventListener('click', () => {capturarDatos()});
 const resultado = document.querySelector('.resultado');
+
+botonCalcular.addEventListener('click', () => {capturarDatos()});
 
 function capturarDatos(){
     const inputNumeroPorcentaje = document.querySelector('.numeroPorcentaje').value;
     const inputPorcentaje = document.querySelector('.porcentaje').value
-    let resultadosParseados = parseFloat(inputNumeroPorcentaje)/100 * parseFloat(inputPorcentaje)
+    const resultadosParseados = parseFloat(inputNumeroPorcentaje)/100 * parseFloat(inputPorcentaje)
     return resultado.innerHTML = `El ${inputPorcentaje}% de ${inputNumeroPorcentaje} es ${resultadosParseados}`};
+
+
+/* AREA O PERIMETRO DE FIGURAS GEOMETRICAS */
+
+    /* BOTONES */
+const btnCalcularCuadrado = document.querySelector('.areaPerCuadrado'),
+    btnCalcularRectangulo = document.querySelector('.areaPerRectangulo'),
+    btnCalcularCirculo = document.querySelector('.areaPerCirculo');
+
+    /* INPUTS */
+const inputCuadradoL = document.querySelector('.inputCuadradoL'),
+    inputRectanguloL = document.querySelector('.inputRectanguloL'),
+    inputRectanguloA = document.querySelector('.inputRectanguloA'),
+    inputCirculoR = document.querySelector('.inputCirculoR');
+
+    /* RESULTADOS DOM */
+const aResultadoCuadrado = document.querySelector('.aResultadoCuadrado'),
+    pResultadoCuadrado = document.querySelector('.pResultadoCuadrado'),
+    aResultadoRectangulo = document.querySelector('.aResultadoRectangulo'),
+    pResultadoRectangulo = document.querySelector('.pResultadoRectangulo'),
+    aResultadoCirculo = document.querySelector('.aResultadoCirculo'),
+    pResultadoCirculo = document.querySelector('pResultadoCirculo');
+
+
+btnCalcularCuadrado.addEventListener('click', () => {
+    const ladoCuadrado = parseFloat(inputCuadradoL.value),
+        pyaCuadrado = new Cuadrado (ladoCuadrado);
+    pResultadoCuadrado.innerHTML = `Perímetro = ${pyaCuadrado.perimetro} cm`;
+    aResultadoCuadrado.innerHTML = `Area = ${pyaCuadrado.area} cm`;
+});
+
+btnCalcularRectangulo.addEventListener('click', () => {
+    const ladoRectangulo = parseFloat(inputRectanguloL.value),
+        altoRectangulo = parseFloat(inputRectanguloA.value),
+        pyaRectangulo = new Rectangulo (ladoRectangulo, altoRectangulo);
+    pResultadoRectangulo.innerHTML = `Perímetro = ${pyaRectangulo.perimetro} cm`;
+    aResultadoRectangulo.innerHTML = `Area = ${pyaRectangulo.area} cm`;
+});
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 /* CODIGO POR ADAPTAR A LA PAGINA YA CORREGIDO */
 
 
-/* class Cuadrado{
-    constructor(lado){
-        this.lado = parseFloat(lado)
-    }
-    get area(){
-        return this.calculoArea();
-    }
-    calculoArea(){
-        return this.lado * this.lado;
-    }
-}
 
-class Rectangulo{
-    constructor(alto, ancho){
-        this.alto = parseFloat(alto)
-        this.ancho = parseFloat(ancho)
-    }
-    get area(){
-        return this.calculoArea();
-    }
-    calculoArea(){
-        return this.alto * this.ancho;
-    }
-}
-
-const nombre=prompt('¿Cual es tu nombre?');
+/* const nombre=prompt('¿Cual es tu nombre?');
 alert(`Bienvenido a "Introduccion a las matematicas" ${nombre}`); 
 
 let y = 1;
@@ -201,8 +231,8 @@ do{
                 break;
             }
         } y++
-} while(y <= 10)  */    
-
+} while(y <= 10)     
+ */
 
 
 
