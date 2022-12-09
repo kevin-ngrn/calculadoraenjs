@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/estilo.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="./DisplayCalculadora.js" type="text/javascript"></script>
     <script src="./Clases.js" type="text/javascript"></script>
     <script src="./script.js" defer></script>
+    <link rel="stylesheet" href="css/estilo.css">
     <title>CALCULADORA JS</title>
 </head>
 <body>
     <main>
         <div class="divUsuario">
-            <p>Bienvenido</p>
+            <p>Bienvenido/a</p>
         </div>
         <div class="divRegistro">
             <form action="#" class="formRegistro">
@@ -73,17 +74,15 @@
     </div>
     <div>
         <h3>Area o Perímetro de una figura geométrica</h3>
-        <div action="#" class="divGeometricas">
+        <div class="divGeometricas">
             <div>
                 <p>Cuadrado</p> 
             </div>
             <div>
                 <p>Rectángulo</p>
-                <p></p>
             </div>
             <div>
                 <p>Círculo</p>
-                <p></p>
             </div>
         </div>
         <div class="contenedorFiguras">
@@ -92,33 +91,64 @@
             <img class="imgCirculo" src="assets/img/circulo.png" alt="circulo">
         </div>
         <div class="divBotonesGeo">
-            <div class="botonesCuadrado">
+            <div class="botonesCuadrado">                
+                <p class="aResultadoCuadrado"></p>
+                <p class="pResultadoCuadrado"></p>
                 <input type="number" placeholder="Lado" class="inputCuadradoL">
                 <button type="button" class="areaPerCuadrado">Calcular</button>
             </div>
-            <div>
+            <div>                
+                <p class="aResultadoRectangulo"></p>
+                <p class="pResultadoRectangulo"></p>
                 <input type="number" placeholder="Largo" class="inputRectanguloL">
                 <input type="number" placeholder="Ancho" class="inputRectanguloA">
                 <button type="button" class="areaPerRectangulo">Calcular</button>
             </div>
-            <div>
+            <div>                
+                <p class="aResultadoCirculo"></p>
+                <p class="pResultadoCirculo"></p>
+                <p class="rResultadoCirculo"></p>
                 <input type="number" placeholder="Radio" class="inputCirculoR">
                 <button type="button" class="areaPerCirculo">Calcular</button>
             </div>
         </div>
-        <div>
+    </div>
+    <div class="divFuncionesT">
+        <h3>Funciones Trigonométricas</h3>
+        <div class="divTrianúguloT">
+            <div class="trianguloT">
+                <img src="./assets/img/triangulo.png" alt="triangulo">
+            </div>
+        <div class="divFormTriangulo">
             <div>
-                <p class="aResultadoCuadrado"></p>
-                <p class="pResultadoCuadrado"></p>
+                <p class="sinP"></p>
+                <p class="cosP"></p>
+                <p class="tanP"></p>
             </div>
             <div>
-                <p class="aResultadoRectangulo"></p>
-                <p class="pResultadoRectangulo"></p>
+                <p class="arcoSinP"></p>
+                <p class="arcoCosP"></p>
+                <p class="arcoTanP"></p>
             </div>
-            <div>
-                <p class="aResultadoCirculo"></p>
-                <p class="pResultadoCirculo"></p>
-            </div>
+            <form class="formTriangulo" action="#">
+                <p class="txtAngulo">Recuerda! Trabajaras con triángulos rectángulos</p>
+                <input type="number" placeholder="Hipotenusa" class="inputHip">
+                <input type="number" placeholder="Cat. Opuesto" class="inputOpu">
+                <input type="number" placeholder="Cat. Adyacente" class="inputAdy"> 
+                <button type="button" class="btnCalcularT">Calcular</button>
+            </form>
+        </div>
+    </div>
+    <div class="ladosT">
+        <p class="txtAngulo">Siendo el ángulo A la referencia:</p>
+        <p class="hipT"></p>
+        <p class="catOpuT"></p>
+        <p class="catAdyT"></p>
+    </div>
+    </div>
+    <div class="containerUp">
+        <div class="botonUp">
+            <i class="icono"></i>
         </div>
     </div>
     </main>

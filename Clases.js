@@ -49,10 +49,13 @@ class Circulo{
         this.radio = parseFloat(radio)
     }
     get perimetro(){
-        return 2 * Math.PI * this.radio
+        return (2 * Math.PI * this.radio).toFixed(1);
     }
     get area(){
-        return Math.PI * (this.radio * this.radio)
+        return (Math.PI * (this.radio * this.radio)).toFixed(1);
+    }
+    get diametro(){
+        return this.radio * 2;
     }
 }
 

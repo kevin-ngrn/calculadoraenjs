@@ -25,6 +25,7 @@ center{
     margin-top: 4%;
     margin-bottom: 6%;
     color: bisque;
+    background: linear-gradient(0deg, black, transparent);
 }
 
 .formVacio{
@@ -37,10 +38,11 @@ center{
 
 .usuarioDom{
     display: flex;
-    justify-content: center;
+    justify-content: end;
     font-family: sans-serif;
-    font-size: x-large;
+    font-size: large;
     color: bisque;
+    margin-right: 20px;
 }
 
 body{
@@ -56,12 +58,16 @@ body{
     grid-template-rows: 160px repeat(5, 75px);
 }
 
+.display{
+    background: linear-gradient(0deg, black, transparent);
+}
+
 h3{
     display: flex;
     justify-content: center;
     font-family: 'Courier New', Courier, monospace;
     font-size: 40px;
-    margin-top: 100px;
+    margin-top: 140px;
     color: bisque;
     text-decoration: underline;
 }
@@ -95,9 +101,11 @@ button:active{
 
 #valor-actual{
     font-size: 1.5em;
+    color: bisque;
 }
 #valor-anterior{
     font-size: 2em;
+    color: bisque;
 }
 
 .formPorcentaje{
@@ -133,19 +141,13 @@ button:active{
     right: 5%;
 }
 
-.pResultadoCuadrado{
+.pResultadoCuadrado, .aResultadoCuadrado,.aResultadoRectangulo,.pResultadoRectangulo,.aResultadoCirculo,.pResultadoCirculo,.rResultadoCirculo{
     font-size: medium;
+    font-weight: bold;
     color: brown;
     margin: 0%;
-    position: relative;
 }
 
-.aResultadoCuadrado{    
-    font-size: medium;
-    color: brown;
-    margin: 0%;
-
-}
 .contenedorFiguras{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -161,4 +163,93 @@ button:active{
 
 .inputCuadradoL,.inputRectanguloL,.inputRectanguloA,.inputCirculoR{
     width: 65px;
+}
+
+.divTrianúguloT{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    margin-top: 8%;
+    color: brown;
+    font-weight: bold;
+}
+
+.trianguloT{
+    display: flex;
+    justify-content: center;
+}
+
+.divFormTriangulo{
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.inputHip, .inputAdy, .inputOpu{
+    width: 150px;
+}
+
+.divFuncionesT{
+    margin-bottom: 10%;
+}
+
+.ladosT{
+    color: brown;
+    font-size: medium;
+    margin-left: 20%;
+    font-weight: bold;
+}
+
+.txtAngulo{
+    font-weight: bold;
+    color: bisque;
+}
+
+.containerUp{
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 66px;
+    z-index: -1;
+}
+
+.botonUp{
+    width: 0px;
+    height: 0px;
+    background-image: url(../assets/img/iconoCalculadora.png);
+    border-radius: 50%;
+    cursor: pointer;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.mostrarBoton{
+    z-index: 10;
+}
+
+.mostrarBoton .botonUp{
+    animation: spawn .3s ease-in-out;
+    width: 66px;
+    height: 66px;
+    z-index: 11;
+}
+
+.mostrar i{
+    transform: translate(-50%, 50%) scale(1);
+}
+
+@keyframes spawn{
+    0%{
+        width: 0px;
+        height: 0px;
+    }
+    50%{
+        width: 80px;
+        height: 80px;
+    }
+    100%{
+        width: 66px;
+        height: 66px;
+    }
 }

@@ -10,10 +10,18 @@ const divUsuario = document.querySelector('.divUsuario'),
     usuarioDom = document.querySelector('.usuarioDom'),
     formVacio = document.querySelector('.formVacio');
 
+/* EVENTO DEL FORM */
 
 botonRegistro.addEventListener('click', () => {
-    if(nombreUsuario.value == ''){
-        formVacio.innerHTML = "Debes completar el formulario";
+    if(nombreUsuario.value == ""){
+        formVacio.innerHTML = "Olvidaste tu nombre!";
+        nombreUsuario.focus();
+    }else if(edadUsuario.value == ""){
+        formVacio.innerHTML = "Olvidaste tu edad!";
+        edadUsuario.focus();
+    }else if(emailUsuario.value == ""){
+        formVacio.innerHTML = "Olvidaste tu email!";
+        emailUsuario.focus();
     }else{
         let usuario = {
             nombre: nombreUsuario.value,
@@ -24,7 +32,22 @@ botonRegistro.addEventListener('click', () => {
     divRegistro.style.display = "none";
     formVacio.style.display = "none";
     let usuarioStorage = JSON.parse(localStorage.getItem("usuario"));
-    usuarioDom.innerHTML = `${usuarioStorage.nombre}, ${usuarioStorage.edad} años`;
+    usuarioDom.innerHTML = `Estudiante: ${usuarioStorage.nombre}, ${usuarioStorage.edad} años`;
+    swal({
+    title: "Desafios Semanales",
+    text: `Deseas recibir desafios matematicos a ${emailUsuario.value}, ${nombreUsuario.value}?`,
+    buttons: ["No, gracias!","Si, quiero!"],
+    }).then((willDelete) => {
+        if (willDelete) {
+        swal("Genial, recuerda que los desafios se adaptan según tu edad!",{
+            icon: "success",});
+        }else {
+        swal({
+            buttons: false,
+            title: `Bienvenido! ${nombreUsuario.value}`,
+            timer: 1000
+        });
+    }});
 }});
 
 
@@ -67,6 +90,8 @@ function capturarDatos(){
     return resultado.innerHTML = `El ${inputPorcentaje}% de ${inputNumeroPorcentaje} es ${resultadosParseados}`};
 
 
+
+
 /* AREA O PERIMETRO DE FIGURAS GEOMETRICAS */
 
     /* BOTONES */
@@ -86,13 +111,15 @@ const aResultadoCuadrado = document.querySelector('.aResultadoCuadrado'),
     aResultadoRectangulo = document.querySelector('.aResultadoRectangulo'),
     pResultadoRectangulo = document.querySelector('.pResultadoRectangulo'),
     aResultadoCirculo = document.querySelector('.aResultadoCirculo'),
-    pResultadoCirculo = document.querySelector('pResultadoCirculo');
+    pResultadoCirculo = document.querySelector('.pResultadoCirculo'),
+    rResultadoCirculo = document.querySelector('.rResultadoCirculo');
 
 
+    /* EVENTOS RESULTADOS */
 btnCalcularCuadrado.addEventListener('click', () => {
     const ladoCuadrado = parseFloat(inputCuadradoL.value),
         pyaCuadrado = new Cuadrado (ladoCuadrado);
-    pResultadoCuadrado.innerHTML = `Perímetro = ${pyaCuadrado.perimetro} cm`;
+    pResultadoCuadrado.innerHTML = `Perimetro = ${pyaCuadrado.perimetro} cm`;
     aResultadoCuadrado.innerHTML = `Area = ${pyaCuadrado.area} cm`;
 });
 
@@ -100,8 +127,92 @@ btnCalcularRectangulo.addEventListener('click', () => {
     const ladoRectangulo = parseFloat(inputRectanguloL.value),
         altoRectangulo = parseFloat(inputRectanguloA.value),
         pyaRectangulo = new Rectangulo (ladoRectangulo, altoRectangulo);
-    pResultadoRectangulo.innerHTML = `Perímetro = ${pyaRectangulo.perimetro} cm`;
+    pResultadoRectangulo.innerHTML = `Perimetro = ${pyaRectangulo.perimetro} cm`;
     aResultadoRectangulo.innerHTML = `Area = ${pyaRectangulo.area} cm`;
+});
+
+btnCalcularCirculo.addEventListener('click', ()=>{
+    const radio = parseFloat(inputCirculoR.value),
+        pyaCirculo = new Circulo (radio);
+    aResultadoCirculo.innerHTML = `Area = ${pyaCirculo.area} cm`;
+    pResultadoCirculo.innerHTML = `Perimetro = ${pyaCirculo.perimetro} cm`;
+    rResultadoCirculo.innerHTML = `Diametro = ${pyaCirculo.diametro} cm`
+})
+
+
+
+/* FUNCIONES TRIGONOMETRICAS */
+
+    /* INPUTS */
+const inputHip = document.querySelector('.inputHip')
+    inputOpu = document.querySelector('.inputOpu');
+    inputAdy = document.querySelector('.inputAdy')
+const btnCalcularT = document.querySelector('.btnCalcularT');
+const msjSinInput = document.querySelector('.txtAngulo')
+
+    /* RESULTADOS */
+const sinP = document.querySelector('.sinP')
+    cosP = document.querySelector('.cosP')
+    tanP = document.querySelector('.tanP')
+    arcoSinP = document.querySelector('.arcoSinP')
+    arcoCosP = document.querySelector('.arcoCosP')
+    arcoTanP = document.querySelector('.arcoTanP');
+
+const hipFigura = document.querySelector('.hipT')
+    catOpuFigura = document.querySelector('.catOpuT')
+    catAdyFigura = document.querySelector('.catAdyT');
+
+
+/* EVENTO RESULTADOS FUNCIONES TRIGONOMETRICAS */
+btnCalcularT.addEventListener('click', () => {
+    if(inputHip.value == ""){
+        msjSinInput.innerHTML = "Debes proporcionar la hipotenusa de tu triángulo rectángulo";
+        inputHip.focus();
+    }else if(inputOpu.value == ""){
+        msjSinInput.innerHTML = "Debes proporcionar el cateto opuesto de tu triángulo rectángulo";
+        inputOpu.focus();
+    }else if(inputAdy.value == ""){
+        msjSinInput.innerHTML = "Debes proporcionar el cateto adyacente de tu triángulo rectángulo";
+        inputAdy.focus();
+    }else{
+    let inputs = [inputHip.value, inputOpu.value, inputAdy.value];
+    for (let i = 0; i < inputs.length; i++){
+        if (i == ""){continue}
+    let sin = (inputs [1] / inputs [0]);
+    let cos = (inputs[2] / inputs[0]);
+    let tan = (inputs[1] / inputs[2]);
+    let arcoSin = Math.asin (sin) / (Math.PI / 180);
+    let arcoCos = Math.acos (cos) / (Math.PI / 180);
+    let arcoTan = Math.atan (tan) / (Math.PI / 180);
+    sinP.innerHTML = `Seno: ${sin}`;
+    cosP.innerHTML = `Coseno: ${cos}`;
+    tanP.innerHTML = `Tangente: ${tan}`;
+    arcoSinP.innerHTML = `Arcoseno: ${arcoSin}º`;
+    arcoCosP.innerHTML = `Arcocoseno: ${arcoCos}º`;
+    arcoTanP.innerHTML = `Arcotangente: ${arcoTan}º`;}
+    hipFigura.innerHTML = `Hipotenusa = ${inputHip.value} cm`;
+    catOpuFigura.innerHTML = `Cat. Opuesto = ${inputOpu.value} cm`;
+    catAdyFigura.innerHTML = `Cat. Adyacente = ${inputAdy.value} cm`;
+}});
+
+
+/* FUNCION PARA MOSTRAR EL BOTON AL SCROLLEAR */
+window.onscroll = function(){
+    if(document.documentElement.scrollTop > 100){
+        document.querySelector('.containerUp')
+        .classList.add('mostrarBoton');
+    }else{
+        document.querySelector('.containerUp')
+        .classList.remove('mostrarBoton');
+    }
+}
+
+/* EVENTO DEL BOTON PARA IR ARRIBA */
+document.querySelector('.containerUp').addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    })
 });
 
 
@@ -112,13 +223,7 @@ btnCalcularRectangulo.addEventListener('click', () => {
 
 
 
-
-
-
-
-
-
-/* CODIGO POR ADAPTAR A LA PAGINA YA CORREGIDO */
+/* CODIGO CON PROMPTS Y ALERTS YA CORREGIDO QUE ADAPTE*/
 
 
 
